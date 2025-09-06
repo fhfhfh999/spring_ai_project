@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring_ai_project
+  ai:
+    openai:
+      # 上述获取的的API-KEY
+      api-key: ${OPENAI_API_KEY}
+      base-url: https://dashscope.aliyuncs.com/compatible-mode
+      chat:
+       options:
+        # 使用的模型
+        model: qwen-flash
+        # 采样的随机性 0~1 较高的值将使输出更具随机性，而较低的值将使结果更加集中和确定
+        temperature: 0.8
