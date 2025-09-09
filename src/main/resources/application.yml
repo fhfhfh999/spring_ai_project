@@ -1,13 +1,21 @@
 spring:
   application:
     name: spring_ai_project
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://123.56.49.39:3306/shf_web?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&useInformationSchema=true&allowLoadLocalInfile=true&allowLocalInfile=true&allowUrlInLocalInfile=true&allowPublicKeyRetrieval=true&allowPublicKeyRetrieval=true&allowPublicKeyRetrieval=true&allowPublicKeyRetrieval=true&allow
+      username: root
+      password: ${MYSQL_PASSWORD}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
   ai:
     dashscope:
       api-key: ${DASH_SCOPE_API_KEY}
 
   memory:
     redis:
-      host: ${REDIS_HOST}
+      host: 123.56.49.39
       port: 6379
       password: ${REDIS_PASSWORD}
       timeout:  5000
