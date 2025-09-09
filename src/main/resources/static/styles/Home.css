@@ -1,0 +1,78 @@
+/* styles/Home.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.container {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: white;
+    padding: 30px;
+}
+
+.header {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+}
+
+.auth-buttons button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.auth-buttons button:hover {
+    background-color: #2980b9;
+}
+
+.main-content {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.quotes-info, .mood-poetry-info {
+    width: 40%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);  /* 半透明背景 */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.quotes-info h2, .mood-poetry-info h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.quotes-info p, .mood-poetry-info p {
+    font-size: 16px;
+    color: #fff;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 12px;
+    color: #fff;
+}
+
+footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

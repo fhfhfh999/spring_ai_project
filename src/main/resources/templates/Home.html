@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shf的主页</title>
+    <link rel="stylesheet" href="/styles/Home.css">
+</head>
+<body>
+<div class="container" th:style="'background-image: url(' + ${randomImageUrl} + ');'">
+    <div class="header">
+        <div class="auth-buttons">
+            <button id="loginBtn">登录</button>
+            <button id="registerBtn">注册</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1>欢迎来到shf的个人博客</h1>
+        <p>因为不知道放什么所以先随便放点东西好了</p>
+    </div>
+
+    <div class="quotes-info">
+        <h2>古文欣赏</h2>
+        <p th:text="${ancientQuote}">加载中...</p>
+    </div>
+
+    <div class="mood-poetry-info">
+        <h2>每日诗句</h2>
+        <p th:text="${moodPoetry}">加载中...</p>
+    </div>
+
+    <footer>
+        <p>背景图片来源：<a href="https://t.alcy.cc/" target="_blank">Alcy 图片</a></p>
+    </footer>
+</div>
+
+<script src="/scripts/Home.js"></script>
+</body>
+</html>
