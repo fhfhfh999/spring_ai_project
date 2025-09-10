@@ -1,7 +1,8 @@
 package com.sustech.controller;
 
-import com.sustech.utils.apiUtils;
-import org.springframework.beans.factory.annotation.Value;
+
+import com.sustech.service.QuoteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,30 +12,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @Value("${quotes.api.key}")  // 从 application.yml 读取 API Key
-    private String apiKey;
+    @Autowired
+    private QuoteService quoteService;
 
     @GetMapping("/")
     public String home(Model model) {
-        // 调用古籍名句 API
-        String ancientQuoteApiUrl = "https://apis.tianapi.com/gjmj/index?key=" + apiKey;
-        String ancientQuote = apiUtils.getApiResponse(ancientQuoteApiUrl, "quote");
-
-        // 调用情绪诗句 API
-        String moodPoetryApiUrl = "https://apis.tianapi.com/moodpoetry/index?key=" + apiKey;
-        String moodPoetry = apiUtils.getApiResponse(moodPoetryApiUrl, "Poetry");
-
-        // 获取随机背景图片的 URL
-        String randomImageUrl = apiUtils.getRandomImageUrl();
+        String ancientQuote = quoteService.getAncientQuote();
+        String moodPoetry = quoteService.getMoodPoetry();
+        String randomImageUrl = quoteService.getRandomImageUrl();
 
         model.addAttribute("randomImageUrl", randomImageUrl);
         model.addAttribute("ancientQuote", ancientQuote);
         model.addAttribute("moodPoetry", moodPoetry);
-        return "Home";  // 返回Home页面
+        return "Home";
     }
-
-
-
     // 跳转到登录页面
     @GetMapping("/login")
     public String login() {
