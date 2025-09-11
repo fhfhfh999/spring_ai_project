@@ -1,7 +1,9 @@
 package com.sustech.controller;
 
+import com.sustech.response.LoginResponse;
+import com.sustech.service.LoginAttemptService;
 import com.sustech.service.TimelyApiService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.sustech.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +15,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/login")
 public class LoginController {
 
-    @Autowired
-    private TimelyApiService timelyApiService;
+    private static final String HOME_PAGE = "/home";
+
+    private final TimelyApiService timelyApiService;
+    private final UserService userService;
+    private final LoginAttemptService loginAttemptService;
+
+    public LoginController(TimelyApiService timelyApiService, UserService UserService, LoginAttemptService loginAttemptService) {
+        this.timelyApiService = timelyApiService;
+        this.userService = UserService;
+        this.loginAttemptService = loginAttemptService;
+    }
 
     // 登录页面 GET 请求处理
     @GetMapping
@@ -28,13 +39,20 @@ public class LoginController {
     // 登录表单提交 POST 请求处理
     @PostMapping
     public String login(@RequestParam String username, @RequestParam String password, Model model) {
-        // 验证用户
-        boolean isValidUser = true;
+        // 判断是否超过最大尝试次数
+        if (loginAttemptService.isBlocked(username)) {
+            model.addAttribute("error", "Your account is temporarily locked due to too many failed login attempts. Please try again later.");
+            return "login";
+        }
 
-        if (isValidUser) {
-            // 登录成功，重定向到主页或其他页面
-            return "redirect:/Home"; // 重定向到首页
+        // 验证用户
+        LoginResponse loginResponse = userService.validateUser(username, password);
+
+        if (loginResponse.isSuccess()) {
+            loginAttemptService.loginSucceeded(username);
+            return "redirect:" + HOME_PAGE;
         } else {
+            loginAttemptService.loginFailed(username);
             // 登录失败，返回登录页面并显示错误信息
             model.addAttribute("error", "用户名或密码错误");
             return "login";

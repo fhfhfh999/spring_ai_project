@@ -44,12 +44,12 @@ public class AIDocterController {
      * 初始化聊天客户端和消息窗口内存管理器
      *
      * @param builder ChatClient.Builder对象，用于构建聊天客户端
-     * @param redisChatMemoryRepository Redis聊天内存仓库，用于持久化聊天记录
+     * @param redisMemoryRepository Redis聊天内存仓库，用于持久化聊天记录
      */
-    public AIDocterController(ChatClient.Builder builder, RedisChatMemoryRepository redisChatMemoryRepository) {
+    public AIDocterController(ChatClient.Builder builder, RedisChatMemoryRepository redisMemoryRepository) {
         // 构建消息窗口聊天内存管理器，设置最大消息数量和Redis仓库
         this.messageWindowChatMemory = MessageWindowChatMemory.builder()
-                .chatMemoryRepository(redisChatMemoryRepository)
+                .chatMemoryRepository(redisMemoryRepository)
                 .maxMessages(MAX_MESSAGES)
                 .build();
 

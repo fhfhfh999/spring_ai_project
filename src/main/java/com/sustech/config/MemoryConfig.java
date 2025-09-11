@@ -1,8 +1,6 @@
 package com.sustech.config;
 
-import com.alibaba.cloud.ai.memory.redis.RedisChatMemoryRepository;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -17,13 +15,29 @@ public class MemoryConfig {
     @Value("${spring.ai.memory.redis.timeout}")
     private int redisTimeout;
 
-    @Bean
-    public RedisChatMemoryRepository redisChatMemoryRepository() {
-        return RedisChatMemoryRepository.builder()
-                .host(redisHost)
-                .port(redisPort)
-                .password(redisPassword)
-                .timeout(redisTimeout)
-                .build();
+    public String getRedisHost() {
+        return redisHost;
     }
+
+    public int getRedisPort() {
+        return redisPort;
+    }
+
+    public String getRedisPassword() {
+        return redisPassword;
+    }
+
+    public int getRedisTimeout() {
+        return redisTimeout;
+    }
+
+//    @Bean
+//    public RedisChatMemoryRepository redisChatMemoryRepository() {
+//        return RedisChatMemoryRepository.builder()
+//                .host(redisHost)
+//                .port(redisPort)
+//                .password(redisPassword)
+//                .timeout(redisTimeout)
+//                .build();
+//    }
 }

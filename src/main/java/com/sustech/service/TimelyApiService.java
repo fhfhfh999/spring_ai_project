@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TimelyApiService {
+    /**
+     * 使用缓存区保存背景及展示用文字
+     * 由于缓存区自动重置功能，实现了隔段时间自动重置背景及文字
+     * 不用担心被人胡乱刷新导致api额度用完了
+     */
 
     private final ApiClient apiClient;
     private final ApiConfig apiConfig;
