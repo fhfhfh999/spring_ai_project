@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shf的主页</title>
-    <link rel="stylesheet" href="/styles/Home.css">
+    <link rel="stylesheet" href="/styles/default_page.css">
 </head>
 <body>
 <div class="container" th:style="'background-image: url(' + ${randomImageUrl} + ');'">
     <div class="header">
         <div class="auth-buttons">
-            <button id="loginBtn">登录</button>
-            <button id="registerBtn">注册</button>
+            <button id="loginBtn" onclick="window.location.href='/login';">登录</button>
+            <button id="registerBtn" onclick="window.location.href='/register';">注册</button>
         </div>
     </div>
 
@@ -35,6 +35,6 @@
     </footer>
 </div>
 
-<script src="/scripts/Home.js"></script>
+<script src="/scripts/default_page.js"></script>
 </body>
 </html>
