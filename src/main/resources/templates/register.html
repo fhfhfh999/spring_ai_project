@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>注册</title>
   <link rel="stylesheet" href="/styles/register.css">
 </head>
-<body>
+<body th:style="'background-image: url(' + ${randomImageUrl} + '); background-size: cover; background-position: center;'">
+<!-- 半透明蒙版 -->
+<div class="overlay"></div>
+
 <div class="register-container">
   <h2>注册</h2>
   <form action="/register" method="post">

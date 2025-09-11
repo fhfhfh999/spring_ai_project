@@ -39,7 +39,7 @@ public class apiUtils {
     }
 
     public String getRandomImageUrl() {
-        String apiUrl = "https://t.alcy.cc/ycy?json";
+        String apiUrl = "https://t.alcy.cc/ycy?json";// 看着像是json实际上是一个图片网站
         return apiClient.get(apiUrl);
     }
 }

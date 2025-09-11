@@ -1,20 +1,37 @@
-/* styles/login.css */
-
+/* 设置body的背景图片 */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
 }
 
+/* 半透明蒙版 */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 你可以调整透明度 */
+    z-index: 1; /* 确保蒙版在背景图片之上 */
+}
+
+/* 登录容器 */
 .login-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    position: relative;
+    z-index: 2; /* 确保登录窗口在蒙版之上 */
+    background-color: rgba(255, 255, 255, 0.8); /* 给登录窗口加个背景，防止内容和背景图片重叠看不清楚 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
     text-align: center;
 }
 
@@ -24,45 +41,34 @@ h2 {
 
 .input-group {
     margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
     text-align: left;
+    margin-bottom: 5px;
 }
 
-input {
+.input-group input {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-button {
-    width: 48%;
     padding: 10px;
-    border: none;
-    background-color: #3498db;
-    color: white;
-    border-radius: 4px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttons button {
+    width: 45%;
+    padding: 10px;
+    font-size: 16px;
     cursor: pointer;
-    margin-top: 10px;
-}
-
-button[type="button"] {
-    background-color: #e74c3c;
-}
-
-button:hover {
-    background-color: #2980b9;
+    margin: 0 10px;
 }
 
 .register-link {
-    margin-top: 10px;
-}
-
-.register-link a {
-    color: #3498db;
-    text-decoration: none;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
+    margin-top: 20px;
 }

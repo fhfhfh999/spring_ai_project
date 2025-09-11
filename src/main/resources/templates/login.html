@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登录</title>
     <link rel="stylesheet" href="/styles/login.css">
 </head>
-<body>
+<body th:style="'background-image: url(' + ${randomImageUrl} + '); background-size: cover; background-position: center;'">
+<!-- 半透明蒙版 -->
+<div class="overlay"></div>
+
 <div class="login-container">
     <h2>登录</h2>
     <form action="/login" method="post">
