@@ -28,7 +28,7 @@ public class LoginController {
     // 登录表单提交 POST 请求处理
     @PostMapping
     public String login(@RequestParam String username, @RequestParam String password, Model model) {
-        // 假设你有一个方法来验证用户
+        // 验证用户
         boolean isValidUser = true;
 
         if (isValidUser) {

@@ -18,7 +18,6 @@ public class RegisterController {
 
     @GetMapping
     public String showRegisterPage(Model model) {
-        // 假设你有一个方法获取随机背景图片的 URL
         String randomImageUrl = timelyApiService.getBackgroundImageUrl();
         model.addAttribute("randomImageUrl", randomImageUrl); // 将背景图片 URL 传递给模板
         return "register";
