@@ -1,6 +1,8 @@
 package com.sustech.controller;
 
+import com.sustech.domain.User;
 import com.sustech.service.TimelyApiService;
+import com.sustech.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/register")
 public class RegisterController {
 
-    @Autowired
-    private TimelyApiService timelyApiService;
+
+    private final TimelyApiService timelyApiService;
+    private final UserService userService;
+
+    public RegisterController(TimelyApiService timelyApiService, UserService userService) {
+        this.timelyApiService = timelyApiService;
+        this.userService = userService;
+    }
 
     @GetMapping
     public String showRegisterPage(Model model) {
@@ -37,8 +45,10 @@ public class RegisterController {
         }
 
         // TODO:注册逻辑
+        if (userService.save(new User(username, password, email))) return "redirect:/login";
 
-        return "redirect:/login"; // 注册成功后跳转到登录页面
+        return "redirect:/register";
+
     }
 
 }

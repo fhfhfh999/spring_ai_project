@@ -2,7 +2,7 @@ package com.sustech.repository;
 
 import com.sustech.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 public interface UserRepository extends JpaRepository<User, Integer> {
@@ -12,4 +12,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     void deleteByUsername(String username);
 
+    UserDetails getUsersByUsername(String username);
 }

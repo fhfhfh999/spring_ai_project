@@ -12,7 +12,8 @@
 
 <div class="login-container">
     <h2>登录</h2>
-    <form action="/login" method="post">
+    <form th:action="@{/login}" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <div class="input-group">
             <label for="username">账号</label>
             <input type="text" id="username" name="username" placeholder="请输入用户名" required>
@@ -26,8 +27,9 @@
             <button type="button" onclick="window.location.href='/'">取消</button>
         </div>
     </form>
-    <div class="register-link">
-        <a href="/register">还没有账号？马上注册</a>
+    <div class="login-links">
+        <a href="/guest" class="guest-link">游客登录</a>
+        <a href="/register" class="register-link">还没有账号？马上注册</a>
     </div>
 </div>
 </body>

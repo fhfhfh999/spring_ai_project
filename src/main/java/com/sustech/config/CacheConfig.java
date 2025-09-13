@@ -15,7 +15,7 @@ public class CacheConfig {
     public CacheManager cacheManager() {
         CaffeineCacheManager mgr = new CaffeineCacheManager("bgImage", "quote");
         mgr.setCaffeine(Caffeine.newBuilder()
-                .expireAfterWrite(30, TimeUnit.MINUTES)
+                .expireAfterWrite(20, TimeUnit.MINUTES)
                 .maximumSize(100));
         return mgr;
     }
